@@ -7,17 +7,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from "@nestjs/jwt";
 
 import { UsersService } from "./users/users.service";
-import {AuthService} from "./auth/auth.service";
-import {FileUploadService} from "./file/file-upload.service";
+import { AuthService } from "./auth/auth.service";
+import { FileUploadService } from "./file/file-upload.service";
 
 import { User } from "./users/entities/users.entity";
 import { File } from "./file/entities/file.entity";
 
-import {UsersController} from "./users/users.controller";
-import {FileUploadController} from "./file/file-upload.controller";
-import {AuthController} from "./auth/auth.controller";
+import { UsersController } from "./users/users.controller";
+import { FileUploadController } from "./file/file-upload.controller";
+import { AuthController } from "./auth/auth.controller";
 
-import {JwtStrategy} from "./auth/jwt.strategy";
+import { JwtStrategy } from "./auth/jwt.strategy";
 
 @Module({
   imports: [

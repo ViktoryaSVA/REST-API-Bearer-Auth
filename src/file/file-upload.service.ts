@@ -6,7 +6,7 @@ import { Multer } from 'multer';
 import { File } from './entities/file.entity';
 import { join } from 'path';
 import { mkdir } from 'fs/promises';
-import {IFileResult} from "../interfaces/file.interface";
+import { IFileResult } from "../interfaces/file.interface";
 
 @Injectable()
 export class FileUploadService {

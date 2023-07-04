@@ -2,8 +2,8 @@ import { Controller, Post, UseInterceptors, UploadedFile, UseGuards } from '@nes
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileUploadService } from './file-upload.service';
 import { Multer } from 'multer';
-import {JwtAuthGuard} from "../auth/jwt-auth.guard";
-import {IFileResult} from "../interfaces/file.interface";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { IFileResult } from "../interfaces/file.interface";
 
 @Controller()
 export class FileUploadController {
