@@ -18,7 +18,7 @@ export class FileUploadService {
     async processFile(file: Multer.File): Promise<IFileResult> {
         try {
             if (!file) {
-                throw new Error('No file uploaded');
+                return { error: 'No file uploaded!' };
             }
 
             const maxFileSize = 10 * 1024 * 1024;
@@ -52,8 +52,8 @@ export class FileUploadService {
                 default:
                     throw new Error('Invalid table type');
             }
-        } catch (e) {
-            throw new Error(e);
+        } catch (error) {
+            throw new Error(error.message);
         }
     }
 

@@ -11,21 +11,29 @@ export class AuthService {
         private readonly jwtService: JwtService,
     ) {}
     async validateUser(username: string, password: string): Promise<User> {
-        const user = await this.userService.findByUsername(username);
-        if (user && user.password === password) {
-            const result = { ...user };
-            return result;
+        try {
+            const user = await this.userService.findByUsername(username);
+            if (user && user.password === password) {
+                const result = { ...user };
+                return result;
+            }
+            return null;
+        } catch (error) {
+            throw new Error(error.message);
         }
-        return null;
     }
 
     async login(username: string, password: string): Promise<ILoginResult> {
-        const user = await this.validateUser(username, password);
-        if (!user) {
-            return { message: 'Invalid credentials' };
+        try {
+            const user = await this.validateUser(username, password);
+            if (!user) {
+                return { message: 'Invalid credentials' };
+            }
+            const payload = { username: user.username, password: user.password };
+            const token = this.jwtService.sign(payload);
+            return { access_token: token };
+        } catch (error) {
+            throw new Error(error.message);
         }
-        const payload = { username: user.username, password: user.password };
-        const token = this.jwtService.sign(payload);
-        return { access_token: token };
     }
 }
