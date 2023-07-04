@@ -12,10 +12,18 @@ export class UsersService extends TypeOrmCrudService<User> {
     }
 
     async createUser(user: CreateUserDto): Promise<User> {
-        return this.repo.save(user);
+        try {
+            return this.repo.save(user);
+        } catch (error) {
+            throw new Error(error.message);
+        }
     }
 
     async findByUsername(username: string): Promise<User | undefined> {
-        return this.repo.findOne({ where: { username } });
+        try {
+            return this.repo.findOne({ where: { username } });
+        } catch (error) {
+            throw new Error(error.message);
+        }
     }
 }
